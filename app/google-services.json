@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "133523252575",
+    "firebase_url": "https://minuteminutiae-cae68.firebaseio.com",
+    "project_id": "minuteminutiae-cae68",
+    "storage_bucket": "minuteminutiae-cae68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133523252575:android:fc5a3cfca9479fcc0542ea",
+        "android_client_info": {
+          "package_name": "com.introtoandroid.minuteminutiae"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133523252575-p7k42on584q6pgr5j9b8po4jqre0g0op.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6Ry86ICb7o-qFtq3QZdHRFf6_Q2eG09Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133523252575-p7k42on584q6pgr5j9b8po4jqre0g0op.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
