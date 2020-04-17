@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="questions">
+        <item>
+            When Michael Jordan played for the Chicago Bulls,
+            how many NBA Championships did he win?
+        </item>
+        <item>
+            Which Williams sister has won more Grand Slam titles?
+        </item>
+        <item>
+            Which racer holds the record for the most Grand Prix wins?
+        </item>
+        <item>
+            Which boxer was known as “The Greatest” and “The People’s Champion”?
+        </item>
+        <item>
+            What country won the very first FIFA World Cup in 1930?
+        </item>
+        <item>
+            Which hockey team did Wayne Gretzky play for in the ‘80s?
+        </item>
+        <item>
+            How many players should each team have on the field at the
+                start of each match?
+        </item>
+        <item>
+            What year was the first iPhone released?
+        </item>
+        <item>
+            What is often seen as the smallest unit of memory?
+        </item>
+        <item>
+            What does "HTTP" stand for?
+        </item>
+        <item>
+            What is twitter's original name?
+        </item>
+        <item>
+            What is Samsung's country of origin ?
+        </item>
+        <item>
+            What company made the super computer named Watson?
+        </item>
+        <item>
+            What company was founded by Reed Hastings and Marc Randolph?
+        </item>
+        <item>
+            The first cell phone was made in what year?
+        </item>
+        <item>
+            What was the name of the first Apple computer?
+        </item>
+        <item>
+            Who discovered penicillin?
+        </item>
+        <item>
+            What is meteorology the study of?
+        </item>
+        <item>
+            What is the symbol of potassium?
+        </item>
+        <item>
+            What is the hottest planet in the solar system?
+        </item>
+        <item>
+            What planet has the most gravity?
+        </item>
+        <item>
+            What natural disaster uses the Richter scale?
+        </item>
+        <item>
+            What country is the largest coffee producer ?
+        </item>
+        <item>
+            What country invented tea ?
+        </item>
+        <item>
+            What is the name of deer meat?
+        </item>
+        <item>
+            What European country is credited with inventing hot dogs?
+        </item>
+        <item>
+            What human organ has 4 chambers ?
+        </item>
+        <item>
+            How many times does the human heart beat every day?
+        </item>
+        <item>
+            What is the human bodies largest organ ?
+        </item>
+        <item>
+            What bone are babies not born with ?
+        </item>
+        <item>
+            How many taste buds do most human tongues have?
+        </item>
+        <item>
+            What does the acronym AIDS stand for ?
+        </item>
+        <item>
+            What continent is the largest
+        </item>
+        <item>
+            What is the largest desert on earth
+        </item>
+        <item>
+            What is the capital of New Zealand
+        </item>
+
+    </string-array>
+</resources>
