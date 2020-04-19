@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/promptB"
+        android:layout_width="176dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="228dp"
+        android:layout_marginEnd="28dp"
+        android:text="@string/firstB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionText" />
+
+    <Button
+        android:id="@+id/promptC"
+        android:layout_width="176dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/firstC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/promptD"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/promptA"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <Button
+        android:id="@+id/promptD"
+        android:layout_width="176dp"
+        android:layout_height="63dp"
+        android:layout_marginEnd="28dp"
+        android:text="@string/firstD"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/promptB"
+        app:layout_constraintVertical_bias="0.068" />
+
+    <Button
+        android:id="@+id/promptA"
+        android:layout_width="176dp"
+        android:layout_height="63dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="228dp"
+        android:text="@string/firstA"
+        app:layout_constraintEnd_toStartOf="@+id/promptB"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionText" />
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_width="353dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="100dp"
+        android:capitalize="characters"
+        android:text="@string/first_question"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

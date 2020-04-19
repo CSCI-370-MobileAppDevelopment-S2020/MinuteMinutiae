@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="first_question"> When Michael Jordan played for the Chicago Bulls,
+            how many NBA Championships did he win? </string>
     <string-array name="questions">
         <item>
             When Michael Jordan played for the Chicago Bulls,
