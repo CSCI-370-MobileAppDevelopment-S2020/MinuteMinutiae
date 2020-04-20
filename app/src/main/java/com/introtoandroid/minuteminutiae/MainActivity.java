@@ -2,13 +2,18 @@ package com.introtoandroid.minuteminutiae;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<String> geoQuestions;
     ArrayList<String> geoAnswers;
+
+    Button startQuiz = (Button) findViewById(R.id.singleQuizButton);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,5 +35,12 @@ public class MainActivity extends AppCompatActivity {
         }};
 
         Quiz geoQuiz = new Quiz(geoQuestions, geoAnswers);
+
+        startQuiz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, game_ready_activity.class));
+            }
+        });
     }
 }
