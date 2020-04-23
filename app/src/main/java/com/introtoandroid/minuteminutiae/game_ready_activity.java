@@ -41,6 +41,12 @@ public class game_ready_activity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 readyP1 = !readyP1;
+                if(readyP1) {
+                    player1.setImageResource(R.drawable.checkicon);
+                }
+                else{
+                    player1.setImageResource(R.drawable.questionmark);
+                }
                 if(readyP1&&readyP2) {
                     game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
                 }
@@ -51,6 +57,12 @@ public class game_ready_activity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 readyP2 = !readyP2;
+                if(readyP2) {
+                    player2.setImageResource(R.drawable.checkicon);
+                }
+                else{
+                    player2.setImageResource(R.drawable.questionmark);
+                }
                 if(readyP1&&readyP2) {
                     game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
                 }
