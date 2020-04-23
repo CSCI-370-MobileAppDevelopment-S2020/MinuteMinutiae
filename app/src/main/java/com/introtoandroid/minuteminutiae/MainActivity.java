@@ -13,11 +13,13 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> geoQuestions;
     ArrayList<String> geoAnswers;
 
-    Button startQuiz = (Button) findViewById(R.id.singleQuizButton);
+    Button startQuiz;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        startQuiz =(Button) findViewById(R.id.singleQuizButton);
 
         geoQuestions = new ArrayList<String>(){{
             add("How many territories does the U.S. have?");
@@ -39,7 +41,9 @@ public class MainActivity extends AppCompatActivity {
         startQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, game_ready_activity.class));
+                //Intent i = new Intent(MainActivity.this, game_ready_activity.class);
+                //MainActivity.this.startActivity(i);
+                MainActivity.this.startActivity(new Intent(MainActivity.this, game_ready_activity.class));
             }
         });
     }

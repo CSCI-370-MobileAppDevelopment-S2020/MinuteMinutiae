@@ -11,31 +11,67 @@ import java.util.ArrayList;
 
 public class game_ready_activity extends AppCompatActivity{
 
-    ImageButton player1 = (ImageButton) findViewById(R.id.imageButton);
-    ImageButton player2 = (ImageButton) findViewById(R.id.imageButton2);
+    ImageButton player1;
+    ImageButton player2;
     int ready = 0;
+    Boolean readyP1 = false;
+    Boolean readyP2 = false;
     public void onCreate (Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_ready_activity);
 
-        player1.setOnClickListener(new View.OnClickListener() {
+        player1 = (ImageButton) findViewById(R.id.imageButton);
+        player2 = (ImageButton) findViewById(R.id.imageButton2);
+
+       /* player1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ready++;
+                readyP1 = !readyP1;
             }
         });
         player2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ready++;
+                readyP2 = !readyP2;
+            }
+        });*/
+
+        player1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readyP1 = !readyP1;
+                if(readyP1) {
+                    player1.setImageResource(R.drawable.checkicon);
+                }
+                else{
+                    player1.setImageResource(R.drawable.questionmark);
+                }
+                if(readyP1&&readyP2) {
+                    game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
+                }
             }
         });
 
-        if(ready > 2)
+        player2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                readyP2 = !readyP2;
+                if(readyP2) {
+                    player2.setImageResource(R.drawable.checkicon);
+                }
+                else{
+                    player2.setImageResource(R.drawable.questionmark);
+                }
+                if(readyP1&&readyP2) {
+                    game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
+                }
+            }
+        });
+        /*if(readyP1 && readyP2)
         {
             startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
-        }
+        }*/
 
     }
 }
