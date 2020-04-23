@@ -41,6 +41,17 @@ public class questionScreen extends Activity {
         promptC.setText(promptsC[questionNum]);
         promptD.setText(promptsD[questionNum]);
 
+        promptA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("Answer", "promtA");
+
+                setResult(RESULT_OK, resultIntent);
+                finish();
+            }
+        });
+
 
 
     }
