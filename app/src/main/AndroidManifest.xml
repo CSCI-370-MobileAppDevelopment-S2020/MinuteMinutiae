@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".button_buzzer"></activity>
         <activity android:name=".questionScreen"></activity>
+        <activity android:name=".end_quiz"></activity>
     </application>
 
 </manifest>

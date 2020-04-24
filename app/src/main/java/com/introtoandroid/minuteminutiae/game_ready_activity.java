@@ -21,8 +21,8 @@ public class game_ready_activity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_ready_activity);
 
-        player1 = (ImageButton) findViewById(R.id.imageButton);
-        player2 = (ImageButton) findViewById(R.id.imageButton2);
+        player1 = findViewById(R.id.imageButton);
+        player2 = findViewById(R.id.imageButton2);
 
        /* player1.setOnClickListener(new View.OnClickListener() {
             @Override

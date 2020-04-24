@@ -17,12 +17,14 @@ public class questionScreen extends Activity {
         setContentView(R.layout.question_screen);
 
         Intent i = getIntent();
-        int questionNum = i.getIntExtra("QUESTION_NUMBER", 0);
-        final TextView questionText = (TextView)findViewById(R.id.questionText);
-        final Button promptA = (Button)findViewById(R.id.promptA);
-        final Button promptB = (Button)findViewById(R.id.promptB);
-        final Button promptC = (Button)findViewById(R.id.promptC);
-        final Button promptD = (Button)findViewById(R.id.promptD);
+        final int questionNum = i.getIntExtra("QUESTION_NUMBER", 0);
+        final int questionSize = i.getIntExtra("QUESTION_SIZE", 0);
+        Log.i("questionScreen", "" + questionSize);
+        final TextView questionText = findViewById(R.id.questionText);
+        final Button promptA = findViewById(R.id.promptA);
+        final Button promptB = findViewById(R.id.promptB);
+        final Button promptC = findViewById(R.id.promptC);
+        final Button promptD = findViewById(R.id.promptD);
 
         String [] questions = getResources().getStringArray(R.array.questions);
         String [] promptsA = getResources().getStringArray(R.array.answersA);
@@ -34,12 +36,31 @@ public class questionScreen extends Activity {
         /*Random rand = new Random();
         int q = questions.length;
         int n = rand.nextInt(questions.length);*/
-        Log.i("QuestionScreen", Integer.toString(questionNum));
+        Log.i("QuestionScreen", "Question Number: " + questionNum);
         questionText.setText(questions[questionNum]);
         promptA.setText(promptsA[questionNum]);
         promptB.setText(promptsB[questionNum]);
         promptC.setText(promptsC[questionNum]);
         promptD.setText(promptsD[questionNum]);
+
+        promptA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(questionSize==5){
+                    //create intent to go to end screen
+                   Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                   startActivity(endScreen);
+
+                }
+                else {
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("Answer", "promtA");
+
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                }
+            }
+        });
 
 
 
