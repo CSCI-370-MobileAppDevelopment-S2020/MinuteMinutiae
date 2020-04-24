@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startQuiz =(Button) findViewById(R.id.singleQuizButton);
+        startQuiz = findViewById(R.id.singleQuizButton);
 
         geoQuestions = new ArrayList<String>(){{
             add("How many territories does the U.S. have?");

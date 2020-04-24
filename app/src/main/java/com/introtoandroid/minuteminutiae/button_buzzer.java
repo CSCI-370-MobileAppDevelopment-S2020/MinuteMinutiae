@@ -31,9 +31,9 @@ public class button_buzzer extends AppCompatActivity {
 
         Log.i("Buzzer", "Question Max: " + maxNumQuestions);
 
-        playerOneButton = (ImageButton) findViewById(R.id.imageButton);
-        playerTwoButton = (ImageButton) findViewById(R.id.imageButton2);
-        questionView = (TextView) findViewById(R.id.question_text_for_user);
+        playerOneButton = findViewById(R.id.imageButton);
+        playerTwoButton = findViewById(R.id.imageButton2);
+        questionView = findViewById(R.id.question_text_for_user);
 
         n = getQuestionNum();
 
@@ -45,6 +45,7 @@ public class button_buzzer extends AppCompatActivity {
                 Log.i("Buzzer", "Player One pressed button first");
                 Intent i = new Intent(button_buzzer.this, questionScreen.class);
                 i.putExtra("QUESTION_NUMBER", n);
+                i.putExtra("QUESTION_SIZE", questionNums.size());
                 startActivityForResult(i, 1);
             }
         });
@@ -56,6 +57,7 @@ public class button_buzzer extends AppCompatActivity {
                 Log.i("Buzzer", "Player Two pressed button first");
                 Intent i = new Intent(button_buzzer.this, questionScreen.class);
                 i.putExtra("QUESTION_NUMBER", n);
+                i.putExtra("QUESTION_SIZE", questionNums.size());
                 startActivity(i);
             }
         });
