@@ -9,12 +9,12 @@ import android.app.Activity;
 
 import java.util.Random;
 
-public class questionScreen extends Activity {
+public class questionScreenRotated extends Activity {
 
     public void onCreate (Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.question_screen);
+        setContentView(R.layout.question_screen_rotated);
 
         Intent i = getIntent();
         String p = i.getStringExtra("PLAYER");
@@ -50,8 +50,8 @@ public class questionScreen extends Activity {
             public void onClick(View view) {
                 if(questionSize==5){
                     //create intent to go to end screen
-                   Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
-                   startActivity(endScreen);
+                    Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
+                    startActivity(endScreen);
 
                 }
                 else {

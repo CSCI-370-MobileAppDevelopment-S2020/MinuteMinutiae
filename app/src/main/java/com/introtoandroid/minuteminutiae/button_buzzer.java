@@ -41,11 +41,11 @@ public class button_buzzer extends AppCompatActivity {
         playerOneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //int num = n;
                 Log.i("Buzzer", "Player One pressed button first");
-                Intent i = new Intent(button_buzzer.this, questionScreen.class);
+                Intent i = new Intent(button_buzzer.this, questionScreenRotated.class);
                 i.putExtra("QUESTION_NUMBER", n);
                 i.putExtra("QUESTION_SIZE", questionNums.size());
+                i.putExtra("PLAYER", "1");
                 startActivityForResult(i, 1);
             }
         });
@@ -58,7 +58,8 @@ public class button_buzzer extends AppCompatActivity {
                 Intent i = new Intent(button_buzzer.this, questionScreen.class);
                 i.putExtra("QUESTION_NUMBER", n);
                 i.putExtra("QUESTION_SIZE", questionNums.size());
-                startActivity(i);
+                i.putExtra("PLAYER", "2");
+                startActivityForResult(i, 1);
             }
         });
 

@@ -34,6 +34,7 @@
         android:id="@+id/promptD"
         android:layout_width="176dp"
         android:layout_height="63dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="28dp"
         android:text="@string/firstD"
         app:layout_constraintBottom_toBottomOf="parent"
