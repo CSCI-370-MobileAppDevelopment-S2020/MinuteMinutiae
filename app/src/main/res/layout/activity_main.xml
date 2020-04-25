@@ -28,6 +28,7 @@
         android:id="@+id/tournamentButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/tournament"
         android:textSize="24sp" />
 
@@ -35,6 +36,7 @@
         android:id="@+id/myQuizzesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/my_quizzes"
         android:textSize="24sp" />
 

@@ -13,27 +13,42 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Quiz> quizList;
 
     Button singleQuizButton;
+    ArrayList<String> geoQuestions;
+    ArrayList<String> geoAnswers;
 
+    Button startQuiz;
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        startQuiz = findViewById(R.id.singleQuizButton);
 
+        geoQuestions = new ArrayList<String>(){{
+            add("How many territories does the U.S. have?");
+            add("What is the youngest country on Earth?");
+            add("What is the most populated country in Europe?");
+            add("What is the largest lake in North America?");
+            add("What is the longest mountain range in the World?");
+        }};
+        geoAnswers = new ArrayList<String>(){{
+            add("5");
+            add("South Sudan");
+            add("Russia");
+            add("Lake Superior");
+            add("The Andes");
+        }};
 
-        singleQuizButton = findViewById(R.id.singleQuizButton);
+        Quiz geoQuiz = new Quiz(geoQuestions, geoAnswers);
 
-
-
-        final Intent singleQuizIntent = new Intent(MainActivity.this, SingleQuizSelect.class);
-        //singleQuizIntent.putParcelableArrayListExtra("quizList", quizList);
-
-        singleQuizButton.setOnClickListener(new View.OnClickListener() {
+        startQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(singleQuizIntent);
+                //Intent i = new Intent(MainActivity.this, game_ready_activity.class);
+                //MainActivity.this.startActivity(i);
+                MainActivity.this.startActivity(new Intent(MainActivity.this, game_ready_activity.class));
             }
         });
-
     }
 }
