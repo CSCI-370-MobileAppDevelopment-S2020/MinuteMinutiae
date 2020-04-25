@@ -1,5 +1,4 @@
 package com.introtoandroid.minuteminutiae;
-
 import java.util.ArrayList;
 
 /**
@@ -7,9 +6,10 @@ import java.util.ArrayList;
  * @version 1.0
  * @since 1.0
  */
-public class Quiz {
+public class Quiz{
     private ArrayList<String> questionList;
     private ArrayList<String> answerList;
+    private String name;
 
     /**
      * Default constructor
@@ -17,15 +17,9 @@ public class Quiz {
     public Quiz(){
         questionList = new ArrayList<>();
         answerList = new ArrayList<>();
+        name = null;
     }
 
-    /**
-     * Constructor
-     * @param questionList A list of strings that act as the questions for a quiz.
-     */
-    public Quiz(ArrayList<String> questionList){
-        this.questionList = questionList;
-    }
 
     /**
      * Constructor
@@ -37,6 +31,22 @@ public class Quiz {
     public Quiz(ArrayList<String> questionList, ArrayList<String> answerList){
         this.questionList = questionList;
         this.answerList = answerList;
+    }
+
+    /**
+     * Sets the name of the quiz
+     * @param name Name
+     */
+    public void setName(String name){
+        this.name = name;
+    }
+
+    /**
+     * Returns the name of the quiz
+     * @return Name
+     */
+    public String getName(){
+        return this.name;
     }
 
     /**

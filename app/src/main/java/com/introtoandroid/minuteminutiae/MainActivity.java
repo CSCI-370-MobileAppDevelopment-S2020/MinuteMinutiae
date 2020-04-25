@@ -10,10 +10,14 @@ import android.widget.Button;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    ArrayList<Quiz> quizList;
+
+    Button singleQuizButton;
     ArrayList<String> geoQuestions;
     ArrayList<String> geoAnswers;
 
     Button startQuiz;
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

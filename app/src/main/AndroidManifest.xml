@@ -18,12 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".game_ready_activity">
 
-        </activity>
+        <activity android:name=".SingleQuizSelect"></activity>
+        <activity android:name=".game_ready_activity"></activity>
         <activity android:name=".button_buzzer"></activity>
         <activity android:name=".questionScreen"></activity>
         <activity android:name=".end_quiz"></activity>
+      
     </application>
 
 </manifest>
