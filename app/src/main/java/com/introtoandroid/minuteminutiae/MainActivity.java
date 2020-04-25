@@ -1,5 +1,6 @@
 package com.introtoandroid.minuteminutiae;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -14,11 +15,13 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Quiz> quizList;
 
     Button singleQuizButton;
-    ArrayList<String> geoQuestions;
-    ArrayList<String> geoAnswers;
 
     Button startQuiz;
     ImageButton settingsButton;
+
+    Boolean roundTimerValue, penaltyValue;
+    Integer numOfQuestions;
+
     final int REQUEST_CODE = 413;
   
     @Override
@@ -29,22 +32,7 @@ public class MainActivity extends AppCompatActivity {
         startQuiz = findViewById(R.id.singleQuizButton);
         settingsButton = findViewById(R.id.settingsButton);
 
-        geoQuestions = new ArrayList<String>(){{
-            add("How many territories does the U.S. have?");
-            add("What is the youngest country on Earth?");
-            add("What is the most populated country in Europe?");
-            add("What is the largest lake in North America?");
-            add("What is the longest mountain range in the World?");
-        }};
-        geoAnswers = new ArrayList<String>(){{
-            add("5");
-            add("South Sudan");
-            add("Russia");
-            add("Lake Superior");
-            add("The Andes");
-        }};
 
-        Quiz geoQuiz = new Quiz(geoQuestions, geoAnswers);
 
         startQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,5 +49,13 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivityForResult(new Intent(MainActivity.this, settings_activity.class), REQUEST_CODE);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode, data);
+        roundTimerValue = data.getBooleanExtra("roundTimerValue", false);
+        penaltyValue = data.getBooleanExtra("penaltyValue", false);
+        numOfQuestions = data.getIntExtra("numOfQuestionsValue", 5);
     }
 }

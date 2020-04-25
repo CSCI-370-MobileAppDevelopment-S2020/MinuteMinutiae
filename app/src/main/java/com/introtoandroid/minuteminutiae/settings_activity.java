@@ -52,6 +52,7 @@ public class settings_activity extends AppCompatActivity {
 
         intent.putExtra("roundTimerValue", roundTimerValue);
         intent.putExtra("penaltyValue", penaltyValue);
+        intent.putExtra("numOfQuestionsValue", numOfQuestionsValue);
         setResult(RESULT_CODE);
         finish();
 
