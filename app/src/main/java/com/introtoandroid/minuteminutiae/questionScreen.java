@@ -1,4 +1,6 @@
 package com.introtoandroid.minuteminutiae;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,13 +12,14 @@ import android.app.Activity;
 import java.util.Random;
 
 public class questionScreen extends Activity {
+    Intent i;
 
     public void onCreate (Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_screen);
 
-        Intent i = getIntent();
+        i = getIntent();
         String p = i.getStringExtra("PLAYER");
 
         final int questionNum = i.getIntExtra("QUESTION_NUMBER", 0);
@@ -45,79 +48,338 @@ public class questionScreen extends Activity {
         promptC.setText(promptsC[questionNum]);
         promptD.setText(promptsD[questionNum]);
 
+        final String answer = answers[questionNum];
+        Log.i("QUESTIONSCREEN", "Answer is: "+ answer);
+
         promptA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(questionSize==5){
-                    //create intent to go to end screen
-                   Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
-                   startActivity(endScreen);
+                if(promptA.getText().toString().equals(answer)){
+                    //selected correct answer
+                    //show pop up that says they answer correctly
+                    //go back to buzzer screen
+                    new AlertDialog.Builder(questionScreen.this)
+                            .setTitle("Correct")
+                            .setMessage("Ready for next question?")
 
-                }
-                else {
-                    Intent resultIntent = new Intent();
-                    resultIntent.putExtra("Answer", "promtA");
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // go back to buzzer screen
+                                    if(questionSize==5){
+                                        //create intent to go to end screen
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0);
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) + 1;
+                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        endScreen.putExtra("PLAYERONESCORE", p1s);
+                                        endScreen.putExtra("PLAYERTWOSCORE", p2s);
+                                        startActivity(endScreen);
 
-                    setResult(RESULT_OK, resultIntent);
-                    finish();
+                                    }
+                                    else {
+                                        Intent resultIntent = new Intent();
+                                        resultIntent.putExtra("Answer", "promtA");
+                                        resultIntent.putExtra("point", "PlayerTwo");
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    }
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            //.setNegativeButton(android.R.string.no, null)
+                            //.setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
+                else{
+                    //selected wrong answer
+                    new AlertDialog.Builder(questionScreen.this)
+                            .setTitle("Incorrect")
+                            //.setMessage("Player 1's turn!")
+                            //.setMessage("Next Question")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // go back to buzzer screen
+                                    if(questionSize==5){
+                                        //create intent to go to end screen
+                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
+                                        endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
+                                        startActivity(endScreen);
+
+                                    }
+                                    else {
+                                        Intent resultIntent = new Intent();
+                                        resultIntent.putExtra("Answer", "promtA");
+                                        resultIntent.putExtra("point", "NA");
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    }
+
+
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            //.setNegativeButton(android.R.string.no, null)
+                            //.setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+
             }
         });
 
         promptB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(questionSize==5){
-                    //create intent to go to end screen
-                    Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
-                    startActivity(endScreen);
+                if(promptB.getText().toString().equals(answer)){
+                    //selected correct answer
+                    //show pop up that says they answer correctly
+                    //go back to buzzer screen
+                    new AlertDialog.Builder(questionScreen.this)
+                            .setTitle("Correct")
+                            .setMessage("Ready for next question?")
 
-                }
-                else {
-                    Intent resultIntent = new Intent();
-                    resultIntent.putExtra("Answer", "promtB");
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // go back to buzzer screen
+                                    if(questionSize==5){
+                                        //create intent to go to end screen
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0);
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) + 1;
+                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        endScreen.putExtra("PLAYERONESCORE", p1s);
+                                        endScreen.putExtra("PLAYERTWOSCORE", p2s);
+                                        startActivity(endScreen);
 
-                    setResult(RESULT_OK, resultIntent);
-                    finish();
+                                    }
+                                    else {
+                                        Intent resultIntent = new Intent();
+                                        resultIntent.putExtra("Answer", "promtB");
+                                        resultIntent.putExtra("point", "PlayerTwo");
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    }
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            //.setNegativeButton(android.R.string.no, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
+                else{
+                    //selected wrong answer
+                    new AlertDialog.Builder(questionScreen.this)
+                            .setTitle("Incorrect")
+                            //.setMessage("Player 1's turn!")
+                            //.setMessage("Next Question")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // go back to buzzer screen
+                                    if(questionSize==5){
+                                        //create intent to go to end screen
+                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
+                                        endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
+                                        startActivity(endScreen);
+
+                                    }
+                                    else {
+                                        Intent resultIntent = new Intent();
+                                        resultIntent.putExtra("Answer", "promtB");
+                                        resultIntent.putExtra("point", "NA");
+
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    }
+
+
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            //.setNegativeButton(android.R.string.no, null)
+                            //.setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+
             }
         });
 
         promptC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(questionSize==5){
-                    //create intent to go to end screen
-                    Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
-                    startActivity(endScreen);
+                if(promptC.getText().toString().equals(answer)){
+                    //selected correct answer
+                    //show pop up that says they answer correctly
+                    //go back to buzzer screen
+                    new AlertDialog.Builder(questionScreen.this)
+                            .setTitle("Correct")
+                            .setMessage("Ready for next question?")
 
-                }
-                else {
-                    Intent resultIntent = new Intent();
-                    resultIntent.putExtra("Answer", "promtC");
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // go back to buzzer screen
+                                    if(questionSize==5){
+                                        //create intent to go to end screen
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0);
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) + 1;
+                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        endScreen.putExtra("PLAYERONESCORE", p1s);
+                                        endScreen.putExtra("PLAYERTWOSCORE", p2s);
+                                        startActivity(endScreen);
+                                    }
+                                    else {
+                                        Intent resultIntent = new Intent();
+                                        resultIntent.putExtra("Answer", "promtC");
+                                        resultIntent.putExtra("point", "PlayerTwo");
 
-                    setResult(RESULT_OK, resultIntent);
-                    finish();
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    }
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            //.setNegativeButton(android.R.string.no, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
+                else{
+                    //selected wrong answer
+                    new AlertDialog.Builder(questionScreen.this)
+                            .setTitle("Incorrect")
+                            //.setMessage("Player 1's turn!")
+                            //.setMessage("Next Question")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // go back to buzzer screen
+                                    if(questionSize==5){
+                                        //create intent to go to end screen
+                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
+                                        endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
+                                        startActivity(endScreen);
+
+                                    }
+                                    else {
+                                        Intent resultIntent = new Intent();
+                                        resultIntent.putExtra("Answer", "promtC");
+                                        resultIntent.putExtra("point", "NA");
+
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    }
+
+
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            //.setNegativeButton(android.R.string.no, null)
+                            //.setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+
             }
         });
 
         promptD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(questionSize==5){
-                    //create intent to go to end screen
-                    Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
-                    startActivity(endScreen);
+                if(promptD.getText().toString().equals(answer)){
+                    //selected correct answer
+                    //show pop up that says they answer correctly
+                    //go back to buzzer screen
+                    new AlertDialog.Builder(questionScreen.this)
+                            .setTitle("Correct")
+                            .setMessage("Ready for next Question?")
 
-                }
-                else {
-                    Intent resultIntent = new Intent();
-                    resultIntent.putExtra("Answer", "promtD");
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // go back to buzzer screen
+                                    if(questionSize==5){
+                                        //create intent to go to end screen
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0);
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) + 1;
+                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        endScreen.putExtra("PLAYERONESCORE", p1s);
+                                        endScreen.putExtra("PLAYERTWOSCORE", p2s);
+                                        startActivity(endScreen);
 
-                    setResult(RESULT_OK, resultIntent);
-                    finish();
+                                    }
+                                    else {
+                                        Intent resultIntent = new Intent();
+                                        resultIntent.putExtra("Answer", "promtD");
+                                        resultIntent.putExtra("point", "PlayerTwo");
+
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    }
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            //.setNegativeButton(android.R.string.no, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                 }
+                else{
+                    //selected wrong answer
+                    new AlertDialog.Builder(questionScreen.this)
+                            .setTitle("Incorrect")
+                            //.setMessage("Player 1's turn!")
+                            //.setMessage("Next Question")
+
+                            // Specifying a listener allows you to take an action before dismissing the dialog.
+                            // The dialog is automatically dismissed when a dialog button is clicked.
+                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // go back to buzzer screen
+                                    if(questionSize==5){
+                                        //create intent to go to end screen
+                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
+                                        endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
+                                        startActivity(endScreen);
+
+                                    }
+                                    else {
+                                        Intent resultIntent = new Intent();
+                                        resultIntent.putExtra("Answer", "promtD");
+                                        resultIntent.putExtra("point", "NA");
+
+                                        setResult(RESULT_OK, resultIntent);
+                                        finish();
+                                    }
+
+
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            //.setNegativeButton(android.R.string.no, null)
+                            //.setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                }
+
             }
         });
 
