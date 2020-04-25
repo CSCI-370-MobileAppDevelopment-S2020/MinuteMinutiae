@@ -1,5 +1,6 @@
 package com.introtoandroid.minuteminutiae;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> geoAnswers;
 
     Button startQuiz;
+
+    //Boolean roundTimerValue,
   
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
 
         startQuiz = findViewById(R.id.singleQuizButton);
 
-        geoQuestions = new ArrayList<String>(){{
+        geoQuestions = new ArrayList<String>() {{
             add("How many territories does the U.S. have?");
             add("What is the youngest country on Earth?");
             add("What is the most populated country in Europe?");
             add("What is the largest lake in North America?");
             add("What is the longest mountain range in the World?");
         }};
-        geoAnswers = new ArrayList<String>(){{
+        geoAnswers = new ArrayList<String>() {{
             add("5");
             add("South Sudan");
             add("Russia");
@@ -51,4 +54,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+
+        }
+
 }
