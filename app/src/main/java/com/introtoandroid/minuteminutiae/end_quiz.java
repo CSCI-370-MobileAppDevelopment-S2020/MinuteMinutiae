@@ -12,9 +12,23 @@ import androidx.annotation.Nullable;
 
 public class end_quiz extends Activity {
 
+    Button home;
+    TextView winner;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quizend);
+
+        home = (Button) findViewById(R.id.home);
+        winner = (TextView) findViewById(R.id.winner);
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(end_quiz.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 }

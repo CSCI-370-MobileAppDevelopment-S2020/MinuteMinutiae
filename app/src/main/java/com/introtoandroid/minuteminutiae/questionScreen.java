@@ -64,6 +64,65 @@ public class questionScreen extends Activity {
             }
         });
 
+        promptB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(questionSize==5){
+                    //create intent to go to end screen
+                    Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                    startActivity(endScreen);
+
+                }
+                else {
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("Answer", "promtB");
+
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                }
+            }
+        });
+
+        promptC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(questionSize==5){
+                    //create intent to go to end screen
+                    Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                    startActivity(endScreen);
+
+                }
+                else {
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("Answer", "promtC");
+
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                }
+            }
+        });
+
+        promptD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(questionSize==5){
+                    //create intent to go to end screen
+                    Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                    startActivity(endScreen);
+
+                }
+                else {
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("Answer", "promtD");
+
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                }
+            }
+        });
+
+
+
 
 
     }
