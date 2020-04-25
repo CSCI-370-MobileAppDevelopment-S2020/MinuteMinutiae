@@ -6,4 +6,8 @@
     <string name="my_quizzes">My Quizzes</string>
     <string name="press_your_button_when_ready">Press Your Button When Ready!</string>
     <string name="questionmark">questionmark</string>
+    <string name="settings_title">Settings</string>
+    <string name="num_of_questions">Number of questions: </string>
+    <string name="answer_penalty">Wrong answer penalty: </string>
+    <string name="round_timer">Round timer: </string>
 </resources>
