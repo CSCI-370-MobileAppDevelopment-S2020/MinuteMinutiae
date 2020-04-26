@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, game_ready_activity.class);
                 i.putExtra("numOfQuestions", numOfQuestions);
+                i.putExtra("penaltyValue", penaltyValue);
                 MainActivity.this.startActivity(i);
                 //MainActivity.this.startActivity(new Intent(MainActivity.this, game_ready_activity.class));
             }
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             penaltyValue = data.getBooleanExtra("penaltyValue", false);
             numOfQuestions = data.getIntExtra("numOfQuestionsValue", 5);
             System.out.println("Number of questions: " + numOfQuestions);
+            System.out.println("Wrong answer penalty: " + penaltyValue);
         }
 
 }

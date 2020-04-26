@@ -20,6 +20,7 @@ public class button_buzzer extends AppCompatActivity {
     ImageButton playerTwoButton;
     TextView questionView;
     ArrayList<Integer> questionNums = new ArrayList<Integer>();
+    Boolean penaltyValue;
     int n;
     int playerOneScore;
     int playerTwoScore;
@@ -31,7 +32,9 @@ public class button_buzzer extends AppCompatActivity {
         setContentView(R.layout.button_buzzer);
         Intent intent = getIntent();
         int maxNumQuestions = intent.getIntExtra("numOfQuestions", 5);
+        penaltyValue = intent.getBooleanExtra("penaltyValue", false);
         //int maxNumQuestions = getResources().getInteger(R.integer.max_questions);
+
 
         Log.i("Buzzer", "Question Max: " + maxNumQuestions);
 
@@ -67,6 +70,7 @@ public class button_buzzer extends AppCompatActivity {
                 i.putExtra("PLAYER", "2");
                 i.putExtra("PLAYERONESCORE", playerOneScore);
                 i.putExtra("PLAYERTWOSCORE", playerTwoScore);
+                i.putExtra("penaltyValue", penaltyValue);
                 startActivityForResult(i, 1);
             }
         });
@@ -83,6 +87,16 @@ public class button_buzzer extends AppCompatActivity {
                     playerTwoScore++;
                 }else if(data.getStringExtra("point").equals("PlayerOne")){
                     playerOneScore++;
+                }
+
+                //If the wrong answer penalty is on, a player loses a point when answering wrong
+                if(penaltyValue == true){
+                    if(data.getStringExtra("wrong").equals("PlayerTwo")){
+                        playerTwoScore--;
+                    }
+                    else if(data.getStringExtra("wrong").equals("PlayerOne")){
+                        playerOneScore--;
+                    }
                 }
 
                 Log.i("Buzzer", "return to buzzer method");
