@@ -10,4 +10,5 @@
     <string name="num_of_questions">Number of questions: </string>
     <string name="answer_penalty">Wrong answer penalty: </string>
     <string name="round_timer">Round timer: </string>
+    <string name="save_button">Save changes</string>
 </resources>
