@@ -11,13 +11,13 @@ import android.app.Activity;
 
 import java.util.Random;
 
-public class questionScreen extends Activity {
-    Intent i;
+public class questionScreenRotated extends Activity {
 
+    Intent i;
     public void onCreate (Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.question_screen);
+        setContentView(R.layout.question_screen_rotated);
 
         i = getIntent();
         String p = i.getStringExtra("PLAYER");
@@ -50,6 +50,7 @@ public class questionScreen extends Activity {
 
         final String answer = answers[questionNum];
         Log.i("QUESTIONSCREEN", "Answer is: "+ answer);
+        final View customLayout = getLayoutInflater().inflate(R.layout.custom_alert_dialog, null);
 
         promptA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,10 +59,12 @@ public class questionScreen extends Activity {
                     //selected correct answer
                     //show pop up that says they answer correctly
                     //go back to buzzer screen
-                    new AlertDialog.Builder(questionScreen.this)
+
+
+                    new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Correct")
                             .setMessage("Ready for next question?")
-
+                            //.setView(customLayout)
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -69,9 +72,9 @@ public class questionScreen extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0);
-                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) + 1;
-                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0)+1;
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0);
+                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", p1s);
                                         endScreen.putExtra("PLAYERTWOSCORE", p2s);
                                         startActivity(endScreen);
@@ -80,7 +83,7 @@ public class questionScreen extends Activity {
                                     else {
                                         Intent resultIntent = new Intent();
                                         resultIntent.putExtra("Answer", "promtA");
-                                        resultIntent.putExtra("point", "PlayerTwo");
+                                        resultIntent.putExtra("point", "PlayerOne");
                                         setResult(RESULT_OK, resultIntent);
                                         finish();
                                     }
@@ -94,11 +97,11 @@ public class questionScreen extends Activity {
                 }
                 else{
                     //selected wrong answer
-                    new AlertDialog.Builder(questionScreen.this)
+                    new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Incorrect")
                             //.setMessage("Player 1's turn!")
                             //.setMessage("Next Question")
-
+                            .setView(customLayout)
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
                             .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -106,7 +109,7 @@ public class questionScreen extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
                                         endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
                                         startActivity(endScreen);
@@ -140,10 +143,10 @@ public class questionScreen extends Activity {
                     //selected correct answer
                     //show pop up that says they answer correctly
                     //go back to buzzer screen
-                    new AlertDialog.Builder(questionScreen.this)
+                    new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Correct")
                             .setMessage("Ready for next question?")
-
+                            //.setView(customLayout)
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -151,9 +154,9 @@ public class questionScreen extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0);
-                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) + 1;
-                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0)+1;
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0);
+                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", p1s);
                                         endScreen.putExtra("PLAYERTWOSCORE", p2s);
                                         startActivity(endScreen);
@@ -162,7 +165,7 @@ public class questionScreen extends Activity {
                                     else {
                                         Intent resultIntent = new Intent();
                                         resultIntent.putExtra("Answer", "promtB");
-                                        resultIntent.putExtra("point", "PlayerTwo");
+                                        resultIntent.putExtra("point", "PlayerOne");
                                         setResult(RESULT_OK, resultIntent);
                                         finish();
                                     }
@@ -176,11 +179,11 @@ public class questionScreen extends Activity {
                 }
                 else{
                     //selected wrong answer
-                    new AlertDialog.Builder(questionScreen.this)
+                    new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Incorrect")
                             //.setMessage("Player 1's turn!")
                             //.setMessage("Next Question")
-
+                            .setView(customLayout)
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
                             .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -188,7 +191,7 @@ public class questionScreen extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
                                         endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
                                         startActivity(endScreen);
@@ -223,10 +226,10 @@ public class questionScreen extends Activity {
                     //selected correct answer
                     //show pop up that says they answer correctly
                     //go back to buzzer screen
-                    new AlertDialog.Builder(questionScreen.this)
+                    new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Correct")
                             .setMessage("Ready for next question?")
-
+                            //.setView(customLayout)
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
                             .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
@@ -234,9 +237,9 @@ public class questionScreen extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0);
-                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) + 1;
-                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0)+1;
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0);
+                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", p1s);
                                         endScreen.putExtra("PLAYERTWOSCORE", p2s);
                                         startActivity(endScreen);
@@ -244,7 +247,7 @@ public class questionScreen extends Activity {
                                     else {
                                         Intent resultIntent = new Intent();
                                         resultIntent.putExtra("Answer", "promtC");
-                                        resultIntent.putExtra("point", "PlayerTwo");
+                                        resultIntent.putExtra("point", "PlayerOne");
 
                                         setResult(RESULT_OK, resultIntent);
                                         finish();
@@ -259,10 +262,11 @@ public class questionScreen extends Activity {
                 }
                 else{
                     //selected wrong answer
-                    new AlertDialog.Builder(questionScreen.this)
+                    new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Incorrect")
                             //.setMessage("Player 1's turn!")
                             //.setMessage("Next Question")
+                            .setView(customLayout)
 
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
@@ -271,7 +275,7 @@ public class questionScreen extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
                                         endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
                                         startActivity(endScreen);
@@ -306,9 +310,10 @@ public class questionScreen extends Activity {
                     //selected correct answer
                     //show pop up that says they answer correctly
                     //go back to buzzer screen
-                    new AlertDialog.Builder(questionScreen.this)
+                    new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Correct")
                             .setMessage("Ready for next Question?")
+                            //.setView(customLayout)
 
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
@@ -317,9 +322,9 @@ public class questionScreen extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0);
-                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) + 1;
-                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0)+ 1;
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) ;
+                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", p1s);
                                         endScreen.putExtra("PLAYERTWOSCORE", p2s);
                                         startActivity(endScreen);
@@ -328,7 +333,7 @@ public class questionScreen extends Activity {
                                     else {
                                         Intent resultIntent = new Intent();
                                         resultIntent.putExtra("Answer", "promtD");
-                                        resultIntent.putExtra("point", "PlayerTwo");
+                                        resultIntent.putExtra("point", "PlayerOne");
 
                                         setResult(RESULT_OK, resultIntent);
                                         finish();
@@ -343,10 +348,11 @@ public class questionScreen extends Activity {
                 }
                 else{
                     //selected wrong answer
-                    new AlertDialog.Builder(questionScreen.this)
+                    new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Incorrect")
                             //.setMessage("Player 1's turn!")
                             //.setMessage("Next Question")
+                            //.setView(customLayout)
 
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
@@ -355,7 +361,7 @@ public class questionScreen extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        Intent endScreen = new Intent(questionScreen.this, end_quiz.class);
+                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
                                         endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
                                         startActivity(endScreen);
@@ -382,8 +388,6 @@ public class questionScreen extends Activity {
 
             }
         });
-
-
 
 
 

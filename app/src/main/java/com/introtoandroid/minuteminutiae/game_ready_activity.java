@@ -16,10 +16,16 @@ public class game_ready_activity extends AppCompatActivity{
     int ready = 0;
     Boolean readyP1 = false;
     Boolean readyP2 = false;
+
+    Integer numOfQuestions;
+
     public void onCreate (Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_ready_activity);
+
+        Intent intent = getIntent();
+        numOfQuestions = intent.getIntExtra("numOfQuestions", 5);
 
         player1 = findViewById(R.id.imageButton);
         player2 = findViewById(R.id.imageButton2);
@@ -48,7 +54,10 @@ public class game_ready_activity extends AppCompatActivity{
                     player1.setImageResource(R.drawable.questionmark);
                 }
                 if(readyP1&&readyP2) {
-                    game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
+                    Intent buzzerIntent = new Intent(game_ready_activity.this, button_buzzer.class);
+                    buzzerIntent.putExtra("numOfQuestions", numOfQuestions);
+                    startActivity(buzzerIntent);
+                    //game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
                 }
             }
         });
@@ -64,7 +73,10 @@ public class game_ready_activity extends AppCompatActivity{
                     player2.setImageResource(R.drawable.questionmark);
                 }
                 if(readyP1&&readyP2) {
-                    game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
+                    Intent buzzerIntent = new Intent(game_ready_activity.this, button_buzzer.class);
+                    buzzerIntent.putExtra("numOfQuestions", numOfQuestions);
+                    startActivity(buzzerIntent);
+                    //game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
                 }
             }
         });

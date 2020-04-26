@@ -21,13 +21,17 @@ public class button_buzzer extends AppCompatActivity {
     TextView questionView;
     ArrayList<Integer> questionNums = new ArrayList<Integer>();
     int n;
+    int playerOneScore;
+    int playerTwoScore;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.button_buzzer);
-        int maxNumQuestions = getResources().getInteger(R.integer.max_questions);
+        Intent intent = getIntent();
+        int maxNumQuestions = intent.getIntExtra("numOfQuestions", 5);
+        //int maxNumQuestions = getResources().getInteger(R.integer.max_questions);
 
         Log.i("Buzzer", "Question Max: " + maxNumQuestions);
 
@@ -41,11 +45,13 @@ public class button_buzzer extends AppCompatActivity {
         playerOneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //int num = n;
                 Log.i("Buzzer", "Player One pressed button first");
-                Intent i = new Intent(button_buzzer.this, questionScreen.class);
+                Intent i = new Intent(button_buzzer.this, questionScreenRotated.class);
                 i.putExtra("QUESTION_NUMBER", n);
                 i.putExtra("QUESTION_SIZE", questionNums.size());
+                i.putExtra("PLAYER", "1");
+                i.putExtra("PLAYERONESCORE", playerOneScore);
+                i.putExtra("PLAYERTWOSCORE", playerTwoScore);
                 startActivityForResult(i, 1);
             }
         });
@@ -58,7 +64,10 @@ public class button_buzzer extends AppCompatActivity {
                 Intent i = new Intent(button_buzzer.this, questionScreen.class);
                 i.putExtra("QUESTION_NUMBER", n);
                 i.putExtra("QUESTION_SIZE", questionNums.size());
-                startActivity(i);
+                i.putExtra("PLAYER", "2");
+                i.putExtra("PLAYERONESCORE", playerOneScore);
+                i.putExtra("PLAYERTWOSCORE", playerTwoScore);
+                startActivityForResult(i, 1);
             }
         });
 
@@ -69,7 +78,12 @@ public class button_buzzer extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==1 ){
             if (resultCode == RESULT_OK){
-
+                //if player one answers correctly add a point
+                if(data.getStringExtra("point").equals("PlayerTwo")){
+                    playerTwoScore++;
+                }else if(data.getStringExtra("point").equals("PlayerOne")){
+                    playerOneScore++;
+                }
 
                 Log.i("Buzzer", "return to buzzer method");
                 Log.i("Buzzzer", Integer.toString(questionNums.size()));

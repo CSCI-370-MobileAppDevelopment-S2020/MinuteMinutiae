@@ -24,7 +24,9 @@
         <activity android:name=".button_buzzer"></activity>
         <activity android:name=".questionScreen"></activity>
         <activity android:name=".end_quiz"></activity>
-      
+        <activity android:name=".questionScreenRotated"></activity>
+        <activity android:name=".settings_activity"></activity>
+    
     </application>
 
 </manifest>
