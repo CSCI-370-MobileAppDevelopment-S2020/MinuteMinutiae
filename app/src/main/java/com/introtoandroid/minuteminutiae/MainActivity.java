@@ -19,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
     Button startQuiz;
     ImageButton settingsButton;
 
-    Boolean roundTimerValue, penaltyValue;
-    Integer numOfQuestions;
+    Boolean roundTimerValue = false;
+    Boolean penaltyValue = false;
+    Integer numOfQuestions = 5;
 
     final int REQUEST_CODE = 413;
   
@@ -37,9 +38,10 @@ public class MainActivity extends AppCompatActivity {
         startQuiz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent i = new Intent(MainActivity.this, game_ready_activity.class);
-                //MainActivity.this.startActivity(i);
-                MainActivity.this.startActivity(new Intent(MainActivity.this, game_ready_activity.class));
+                Intent i = new Intent(MainActivity.this, game_ready_activity.class);
+                i.putExtra("numOfQuestions", numOfQuestions);
+                MainActivity.this.startActivity(i);
+                //MainActivity.this.startActivity(new Intent(MainActivity.this, game_ready_activity.class));
             }
         });
 

@@ -29,7 +29,9 @@ public class button_buzzer extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.button_buzzer);
-        int maxNumQuestions = getResources().getInteger(R.integer.max_questions);
+        Intent intent = getIntent();
+        int maxNumQuestions = intent.getIntExtra("numOfQuestions", 5);
+        //int maxNumQuestions = getResources().getInteger(R.integer.max_questions);
 
         Log.i("Buzzer", "Question Max: " + maxNumQuestions);
 
