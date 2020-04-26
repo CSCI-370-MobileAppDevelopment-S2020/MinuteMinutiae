@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, game_ready_activity.class);
                 i.putExtra("numOfQuestions", numOfQuestions);
+                i.putExtra("penaltyValue", penaltyValue);
                 MainActivity.this.startActivity(i);
                 //MainActivity.this.startActivity(new Intent(MainActivity.this, game_ready_activity.class));
             }

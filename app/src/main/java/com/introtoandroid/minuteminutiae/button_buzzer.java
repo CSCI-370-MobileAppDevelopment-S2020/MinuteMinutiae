@@ -20,6 +20,7 @@ public class button_buzzer extends AppCompatActivity {
     ImageButton playerTwoButton;
     TextView questionView;
     ArrayList<Integer> questionNums = new ArrayList<Integer>();
+    Boolean penaltyValue;
     int n;
     int playerOneScore;
     int playerTwoScore;
@@ -31,6 +32,7 @@ public class button_buzzer extends AppCompatActivity {
         setContentView(R.layout.button_buzzer);
         Intent intent = getIntent();
         int maxNumQuestions = intent.getIntExtra("numOfQuestions", 5);
+        penaltyValue = intent.getBooleanExtra("penaltyValue", false);
         //int maxNumQuestions = getResources().getInteger(R.integer.max_questions);
 
         Log.i("Buzzer", "Question Max: " + maxNumQuestions);

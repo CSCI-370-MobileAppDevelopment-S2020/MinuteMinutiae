@@ -18,6 +18,7 @@ public class game_ready_activity extends AppCompatActivity{
     Boolean readyP2 = false;
 
     Integer numOfQuestions;
+    Boolean penaltyValue;
 
     public void onCreate (Bundle savedInstanceState) {
 
@@ -26,6 +27,7 @@ public class game_ready_activity extends AppCompatActivity{
 
         Intent intent = getIntent();
         numOfQuestions = intent.getIntExtra("numOfQuestions", 5);
+        penaltyValue = intent.getBooleanExtra("penaltyValue", false);
 
         player1 = findViewById(R.id.imageButton);
         player2 = findViewById(R.id.imageButton2);
@@ -56,6 +58,7 @@ public class game_ready_activity extends AppCompatActivity{
                 if(readyP1&&readyP2) {
                     Intent buzzerIntent = new Intent(game_ready_activity.this, button_buzzer.class);
                     buzzerIntent.putExtra("numOfQuestions", numOfQuestions);
+                    buzzerIntent.putExtra("penaltyValue", penaltyValue);
                     startActivity(buzzerIntent);
                     //game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
                 }
@@ -75,6 +78,7 @@ public class game_ready_activity extends AppCompatActivity{
                 if(readyP1&&readyP2) {
                     Intent buzzerIntent = new Intent(game_ready_activity.this, button_buzzer.class);
                     buzzerIntent.putExtra("numOfQuestions", numOfQuestions);
+                    buzzerIntent.putExtra("penaltyValue", penaltyValue);
                     startActivity(buzzerIntent);
                     //game_ready_activity.this.startActivity(new Intent(game_ready_activity.this, button_buzzer.class));
                 }
