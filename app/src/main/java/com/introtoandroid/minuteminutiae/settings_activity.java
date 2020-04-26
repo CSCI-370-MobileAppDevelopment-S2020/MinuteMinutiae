@@ -113,6 +113,7 @@ public class settings_activity extends AppCompatActivity {
                     numOfQuestionsValue = 15;
                     break;
         }
+
     }
 
     /**

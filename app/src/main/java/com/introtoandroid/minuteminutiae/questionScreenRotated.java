@@ -21,6 +21,7 @@ public class questionScreenRotated extends Activity {
 
         i = getIntent();
         String p = i.getStringExtra("PLAYER");
+        final Boolean penaltyValue = i.getBooleanExtra("penaltyValue", false);
 
         final int questionNum = i.getIntExtra("QUESTION_NUMBER", 0);
         final int questionSize = i.getIntExtra("QUESTION_SIZE", 0);
@@ -52,268 +53,19 @@ public class questionScreenRotated extends Activity {
         Log.i("QUESTIONSCREEN", "Answer is: "+ answer);
         final View customLayout = getLayoutInflater().inflate(R.layout.custom_alert_dialog, null);
 
-        promptA.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener answerListener = new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                if(promptA.getText().toString().equals(answer)){
-                    //selected correct answer
-                    //show pop up that says they answer correctly
-                    //go back to buzzer screen
-
-
-                    new AlertDialog.Builder(questionScreenRotated.this)
-                            .setTitle("Correct")
-                            .setMessage("Ready for next question?")
-                            //.setView(customLayout)
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // go back to buzzer screen
-                                    if(questionSize==5){
-                                        //create intent to go to end screen
-                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0)+1;
-                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0);
-                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
-                                        endScreen.putExtra("PLAYERONESCORE", p1s);
-                                        endScreen.putExtra("PLAYERTWOSCORE", p2s);
-                                        startActivity(endScreen);
-
-                                    }
-                                    else {
-                                        Intent resultIntent = new Intent();
-                                        resultIntent.putExtra("Answer", "promtA");
-                                        resultIntent.putExtra("point", "PlayerOne");
-                                        setResult(RESULT_OK, resultIntent);
-                                        finish();
-                                    }
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
-                            //.setNegativeButton(android.R.string.no, null)
-                            //.setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
-                else{
-                    //selected wrong answer
-                    new AlertDialog.Builder(questionScreenRotated.this)
-                            .setTitle("Incorrect")
-                            //.setMessage("Player 1's turn!")
-                            //.setMessage("Next Question")
-                            .setView(customLayout)
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // go back to buzzer screen
-                                    if(questionSize==5){
-                                        //create intent to go to end screen
-                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
-                                        endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
-                                        endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
-                                        startActivity(endScreen);
-
-                                    }
-                                    else {
-                                        Intent resultIntent = new Intent();
-                                        resultIntent.putExtra("Answer", "promtA");
-                                        resultIntent.putExtra("point", "NA");
-                                        setResult(RESULT_OK, resultIntent);
-                                        finish();
-                                    }
-
-
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
-                            //.setNegativeButton(android.R.string.no, null)
-                            //.setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
-
-            }
-        });
-
-        promptB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(promptB.getText().toString().equals(answer)){
-                    //selected correct answer
-                    //show pop up that says they answer correctly
-                    //go back to buzzer screen
-                    new AlertDialog.Builder(questionScreenRotated.this)
-                            .setTitle("Correct")
-                            .setMessage("Ready for next question?")
-                            //.setView(customLayout)
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // go back to buzzer screen
-                                    if(questionSize==5){
-                                        //create intent to go to end screen
-                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0)+1;
-                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0);
-                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
-                                        endScreen.putExtra("PLAYERONESCORE", p1s);
-                                        endScreen.putExtra("PLAYERTWOSCORE", p2s);
-                                        startActivity(endScreen);
-
-                                    }
-                                    else {
-                                        Intent resultIntent = new Intent();
-                                        resultIntent.putExtra("Answer", "promtB");
-                                        resultIntent.putExtra("point", "PlayerOne");
-                                        setResult(RESULT_OK, resultIntent);
-                                        finish();
-                                    }
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
-                            //.setNegativeButton(android.R.string.no, null)
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
-                else{
-                    //selected wrong answer
-                    new AlertDialog.Builder(questionScreenRotated.this)
-                            .setTitle("Incorrect")
-                            //.setMessage("Player 1's turn!")
-                            //.setMessage("Next Question")
-                            .setView(customLayout)
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // go back to buzzer screen
-                                    if(questionSize==5){
-                                        //create intent to go to end screen
-                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
-                                        endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
-                                        endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
-                                        startActivity(endScreen);
-
-                                    }
-                                    else {
-                                        Intent resultIntent = new Intent();
-                                        resultIntent.putExtra("Answer", "promtB");
-                                        resultIntent.putExtra("point", "NA");
-
-                                        setResult(RESULT_OK, resultIntent);
-                                        finish();
-                                    }
-
-
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
-                            //.setNegativeButton(android.R.string.no, null)
-                            //.setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
-
-            }
-        });
-
-        promptC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(promptC.getText().toString().equals(answer)){
-                    //selected correct answer
-                    //show pop up that says they answer correctly
-                    //go back to buzzer screen
-                    new AlertDialog.Builder(questionScreenRotated.this)
-                            .setTitle("Correct")
-                            .setMessage("Ready for next question?")
-                            //.setView(customLayout)
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton("Yes!", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // go back to buzzer screen
-                                    if(questionSize==5){
-                                        //create intent to go to end screen
-                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0)+1;
-                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0);
-                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
-                                        endScreen.putExtra("PLAYERONESCORE", p1s);
-                                        endScreen.putExtra("PLAYERTWOSCORE", p2s);
-                                        startActivity(endScreen);
-                                    }
-                                    else {
-                                        Intent resultIntent = new Intent();
-                                        resultIntent.putExtra("Answer", "promtC");
-                                        resultIntent.putExtra("point", "PlayerOne");
-
-                                        setResult(RESULT_OK, resultIntent);
-                                        finish();
-                                    }
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
-                            //.setNegativeButton(android.R.string.no, null)
-                            .setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
-                else{
-                    //selected wrong answer
-                    new AlertDialog.Builder(questionScreenRotated.this)
-                            .setTitle("Incorrect")
-                            //.setMessage("Player 1's turn!")
-                            //.setMessage("Next Question")
-                            .setView(customLayout)
-
-                            // Specifying a listener allows you to take an action before dismissing the dialog.
-                            // The dialog is automatically dismissed when a dialog button is clicked.
-                            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // go back to buzzer screen
-                                    if(questionSize==5){
-                                        //create intent to go to end screen
-                                        Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
-                                        endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
-                                        endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
-                                        startActivity(endScreen);
-
-                                    }
-                                    else {
-                                        Intent resultIntent = new Intent();
-                                        resultIntent.putExtra("Answer", "promtC");
-                                        resultIntent.putExtra("point", "NA");
-
-                                        setResult(RESULT_OK, resultIntent);
-                                        finish();
-                                    }
-
-
-                                }
-                            })
-
-                            // A null listener allows the button to dismiss the dialog and take no further action.
-                            //.setNegativeButton(android.R.string.no, null)
-                            //.setIcon(android.R.drawable.ic_dialog_alert)
-                            .show();
-                }
-
-            }
-        });
-
-        promptD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(promptD.getText().toString().equals(answer)){
+                //Figure out which button was clicked
+                int buttonID = view.getId();
+                Button buttonClicked = findViewById(buttonID);
+                if(buttonClicked.getText().toString().equals(answer)){
                     //selected correct answer
                     //show pop up that says they answer correctly
                     //go back to buzzer screen
                     new AlertDialog.Builder(questionScreenRotated.this)
                             .setTitle("Correct")
                             .setMessage("Ready for next Question?")
-                            //.setView(customLayout)
 
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
@@ -322,8 +74,8 @@ public class questionScreenRotated extends Activity {
                                     // go back to buzzer screen
                                     if(questionSize==5){
                                         //create intent to go to end screen
-                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0)+ 1;
-                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0) ;
+                                        int p1s = i.getIntExtra("PLAYERONESCORE", 0) + 1;
+                                        int p2s = i.getIntExtra("PLAYERTWOSCORE", 0);
                                         Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
                                         endScreen.putExtra("PLAYERONESCORE", p1s);
                                         endScreen.putExtra("PLAYERTWOSCORE", p2s);
@@ -332,8 +84,8 @@ public class questionScreenRotated extends Activity {
                                     }
                                     else {
                                         Intent resultIntent = new Intent();
-                                        resultIntent.putExtra("Answer", "promtD");
                                         resultIntent.putExtra("point", "PlayerOne");
+                                        resultIntent.putExtra("wrong", "NA" );
 
                                         setResult(RESULT_OK, resultIntent);
                                         finish();
@@ -352,7 +104,6 @@ public class questionScreenRotated extends Activity {
                             .setTitle("Incorrect")
                             //.setMessage("Player 1's turn!")
                             //.setMessage("Next Question")
-                            //.setView(customLayout)
 
                             // Specifying a listener allows you to take an action before dismissing the dialog.
                             // The dialog is automatically dismissed when a dialog button is clicked.
@@ -362,16 +113,22 @@ public class questionScreenRotated extends Activity {
                                     if(questionSize==5){
                                         //create intent to go to end screen
                                         Intent endScreen = new Intent(questionScreenRotated.this, end_quiz.class);
-                                        endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERONESCORE", 0));
+                                        //If wrong answer penalty is on, they lose a point when wrong
+                                        if(penaltyValue){
+                                            int p1Score = i.getIntExtra("PLAYERONESCORE", 0) - 1;
+                                            endScreen.putExtra("PLAYERONESCORE", p1Score);
+                                        }
+                                        else {
+                                            endScreen.putExtra("PLAYERONESCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
+                                        }
                                         endScreen.putExtra("PLAYERTWOSCORE", i.getIntExtra("PLAYERTWOSCORE", 0));
                                         startActivity(endScreen);
 
                                     }
                                     else {
                                         Intent resultIntent = new Intent();
-                                        resultIntent.putExtra("Answer", "promtD");
                                         resultIntent.putExtra("point", "NA");
-
+                                        resultIntent.putExtra("wrong", "PlayerOne");
                                         setResult(RESULT_OK, resultIntent);
                                         finish();
                                     }
@@ -387,9 +144,15 @@ public class questionScreenRotated extends Activity {
                 }
 
             }
-        });
+        };
 
+        promptA.setOnClickListener(answerListener);
 
+        promptB.setOnClickListener(answerListener);
+
+        promptC.setOnClickListener(answerListener);
+
+        promptD.setOnClickListener(answerListener);
 
     }
 }

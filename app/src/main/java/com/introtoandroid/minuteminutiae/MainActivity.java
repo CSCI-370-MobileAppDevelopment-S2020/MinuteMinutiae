@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             penaltyValue = data.getBooleanExtra("penaltyValue", false);
             numOfQuestions = data.getIntExtra("numOfQuestionsValue", 5);
             System.out.println("Number of questions: " + numOfQuestions);
+            System.out.println("Wrong answer penalty: " + penaltyValue);
         }
 
 }
