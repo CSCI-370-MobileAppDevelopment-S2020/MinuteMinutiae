@@ -75,13 +75,6 @@
                 android:text="@string/answer_penalty"
                 android:textSize="18sp" />
 
-            <Switch
-                android:id="@+id/timerSwitch"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:switchPadding="5dp"
-                android:text="@string/round_timer"
-                android:textSize="18sp" />
         </LinearLayout>
     </ScrollView>
 
