@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     Button startQuiz;
     ImageButton settingsButton;
 
-    Boolean roundTimerValue = false;
     Boolean penaltyValue = false;
     Integer numOfQuestions;
 
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
             super.onActivityResult(requestCode, resultCode, data);
-            roundTimerValue = data.getBooleanExtra("roundTimerValue", false);
             penaltyValue = data.getBooleanExtra("penaltyValue", false);
             numOfQuestions = data.getIntExtra("numOfQuestionsValue", 5);
             System.out.println("Number of questions: " + numOfQuestions);
