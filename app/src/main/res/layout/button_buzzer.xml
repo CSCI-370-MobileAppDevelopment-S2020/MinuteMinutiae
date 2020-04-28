@@ -14,7 +14,7 @@
         android:layoutDirection="inherit"
         android:orientation="horizontal"
         android:rotation="90"
-        android:text="placeholder"
+        android:text="@string/placeholder"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
